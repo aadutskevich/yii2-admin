@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Json;
-use aadutskevichadmin\AnimateAsset;
+use aadutskevich\admin\AnimateAsset;
 use yii\web\YiiAsset;
 
 /* @var $this yii\web\View */

@@ -1,8 +1,8 @@
 <?php
 
-namespace aadutskevichadmin\controllers;
+namespace aadutskevich\admin\controllers;
 
-use aadutskevichadmin\components\ItemController;
+use aadutskevich\admin\components\ItemController;
 use yii\rbac\Item;
 
 /**

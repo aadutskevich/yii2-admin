@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this  yii\web\View */
-/* @var $model aadutskevichadmin\models\BizRule */
+/* @var $model aadutskevich\admin\models\BizRule */
 
 $this->title = Yii::t('rbac-admin', 'Create Rule');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Rules'), 'url' => ['index']];

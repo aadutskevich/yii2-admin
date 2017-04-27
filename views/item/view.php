@@ -3,12 +3,12 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Json;
-use aadutskevichadmin\AnimateAsset;
+use aadutskevich\admin\AnimateAsset;
 use yii\web\YiiAsset;
 
 /* @var $this yii\web\View */
-/* @var $model aadutskevichadmin\models\AuthItem */
-/* @var $context aadutskevichadmin\components\ItemController */
+/* @var $model aadutskevich\admin\models\AuthItem */
+/* @var $context aadutskevich\admin\components\ItemController */
 
 $context = $this->context;
 $labels = $context->labels();

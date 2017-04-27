@@ -1,10 +1,10 @@
 <?php
 
-namespace aadutskevichadmin\controllers;
+namespace aadutskevich\admin\controllers;
 
 use Yii;
-use aadutskevichadmin\models\Assignment;
-use aadutskevichadmin\models\searchs\Assignment as AssignmentSearch;
+use aadutskevich\admin\models\Assignment;
+use aadutskevich\admin\models\searchs\Assignment as AssignmentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -32,7 +32,7 @@ class AssignmentController extends Controller
         parent::init();
         if ($this->userClassName === null) {
             $this->userClassName = Yii::$app->getUser()->identityClass;
-            $this->userClassName = $this->userClassName ? : 'aadutskevichadmin\models\User';
+            $this->userClassName = $this->userClassName ? : 'aadutskevich\admin\models\User';
         }
     }
 

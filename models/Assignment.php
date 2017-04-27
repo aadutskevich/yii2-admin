@@ -1,10 +1,10 @@
 <?php
 
-namespace aadutskevichadmin\models;
+namespace aadutskevich\admin\models;
 
 use Yii;
 use yii\base\Object;
-use aadutskevichadmin\components\Helper;
+use aadutskevich\admin\components\Helper;
 
 /**
  * Description of Assignment

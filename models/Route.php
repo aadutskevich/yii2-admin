@@ -1,12 +1,12 @@
 <?php
 
-namespace aadutskevichadmin\models;
+namespace aadutskevich\admin\models;
 
 use Yii;
-use aadutskevichadmin\components\Helper;
+use aadutskevich\admin\components\Helper;
 use yii\caching\TagDependency;
-use aadutskevichadmin\components\RouteRule;
-use aadutskevichadmin\components\Configs;
+use aadutskevich\admin\components\RouteRule;
+use aadutskevich\admin\components\Configs;
 use yii\helpers\VarDumper;
 use Exception;
 

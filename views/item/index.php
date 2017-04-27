@@ -2,12 +2,12 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use aadutskevichadmin\components\RouteRule;
+use aadutskevich\admin\components\RouteRule;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $searchModel aadutskevichadmin\models\searchs\AuthItem */
-/* @var $context aadutskevichadmin\components\ItemController */
+/* @var $searchModel aadutskevich\admin\models\searchs\AuthItem */
+/* @var $context aadutskevich\admin\components\ItemController */
 
 $context = $this->context;
 $labels = $context->labels();

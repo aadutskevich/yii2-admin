@@ -1,12 +1,12 @@
 <?php
 
-namespace aadutskevichadmin\models;
+namespace aadutskevich\admin\models;
 
 use Yii;
 use yii\rbac\Item;
 use yii\helpers\Json;
 use yii\base\Model;
-use aadutskevichadmin\components\Helper;
+use aadutskevich\admin\components\Helper;
 
 /**
  * This is the model class for table "tbl_auth_item".

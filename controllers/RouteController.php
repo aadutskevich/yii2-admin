@@ -1,9 +1,9 @@
 <?php
 
-namespace aadutskevichadmin\controllers;
+namespace aadutskevich\admin\controllers;
 
 use Yii;
-use aadutskevichadmin\models\Route;
+use aadutskevich\admin\models\Route;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 

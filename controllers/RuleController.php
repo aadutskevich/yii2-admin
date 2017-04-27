@@ -1,14 +1,14 @@
 <?php
 
-namespace aadutskevichadmin\controllers;
+namespace aadutskevich\admin\controllers;
 
 use Yii;
-use aadutskevichadmin\models\BizRule;
+use aadutskevich\admin\models\BizRule;
 use yii\web\Controller;
-use aadutskevichadmin\models\searchs\BizRule as BizRuleSearch;
+use aadutskevich\admin\models\searchs\BizRule as BizRuleSearch;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
-use aadutskevichadmin\components\Helper;
+use aadutskevich\admin\components\Helper;
 
 /**
  * Description of RuleController

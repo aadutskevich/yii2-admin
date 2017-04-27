@@ -3,11 +3,11 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
-use aadutskevichadmin\AnimateAsset;
+use aadutskevich\admin\AnimateAsset;
 use yii\web\YiiAsset;
 
 /* @var $this yii\web\View */
-/* @var $model aadutskevichadmin\models\Assignment */
+/* @var $model aadutskevich\admin\models\Assignment */
 /* @var $fullnameField string */
 
 $userName = $model->{$usernameField};

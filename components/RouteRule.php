@@ -1,6 +1,6 @@
 <?php
 
-namespace aadutskevichadmin\components;
+namespace aadutskevich\admin\components;
 
 use Yii;
 use yii\rbac\Rule;
