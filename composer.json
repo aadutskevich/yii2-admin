@@ -1,0 +1,13 @@
+{
+    "name": "aadutskevich/yii2-admin",
+    "type": "yii2-extension",
+    "minimum-stability": "stable",
+    "require": {
+        "yiisoft/yii2": "~2.0.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "aadutskevich\\admin\\": ""
+        }
+    }
+}
