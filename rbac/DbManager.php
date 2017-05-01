@@ -127,6 +127,15 @@ class DbManager extends BaseManager
 	 */
 	public function checkAccess($userId, $permissionName, $params = [])
 	{
+		// Не разрешаем никаких действий, если пользоьватель неактивен или организация неактивна
+		if(
+			!Yii::$app->user->identity ||
+			!Yii::$app->user->identity->is_active ||
+			(Yii::$app->user->identity->client && !Yii::$app->user->identity->client0->is_active)
+		){
+			return FALSE;
+		}
+
 		$assignments = $this->getAssignments($userId);
 
 		if ($this->hasNoAssignments($assignments)) {

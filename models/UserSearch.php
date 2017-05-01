@@ -60,7 +60,7 @@ class UserSearch extends User
 
         // grid filtering conditions
         $query
-	        ->andFilterWhere(['is_active' => $this->id])
+	        ->andFilterWhere(['is_active' => $this->is_active])
             ->andFilterWhere(['ilike', 'name', $this->name])
             ->andFilterWhere(['ilike', 'login', $this->login]);
 

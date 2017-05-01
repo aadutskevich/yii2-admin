@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use kartik\editable\Editable;
+use common\models\User;
 use kartik\grid\EditableColumn;
 use common\widgets\ConfirmAction;
 
@@ -22,7 +22,7 @@ echo GridView::widget([
 
 	'panelBeforeTemplate' =>
 		Html::a(Yii::t('common', 'Create'), ['create'], ['class' => 'btn btn-success pull-left']) .
-		'{pager}' . \common\widgets\pagesize\PageSize::widget()
+		'{pager}' . \common\widgets\PageSize::widget()
 	,
 
 	'dataProvider' => $dataProvider,
@@ -66,19 +66,56 @@ echo GridView::widget([
 
 		],
 
-		// Назначения
+		// Роли
 		[
-			'header' => Yii::t('User', 'Assignments'),
-			'class' => EditableColumn::className(),
-
+			'header' => Yii::t('User', 'Roles'),
+			'value' => function(User $model) {
+				return implode(', ', \yii\helpers\ArrayHelper::getColumn(Yii::$app->authManager->getRolesByUser($model->id), 'name_t'));
+			},
 		],
 
+		// Пароль
+		[
+			'attribute' => 'new_password',
+			'label' => '',
+			'contentOptions' => ['class' => 'action-column'],
+			'class' => EditableColumn::className(),
+			'format' => 'raw',
+			'editableOptions' => function(User $model, $key, $index) {
+				$icon = Html::tag('span', '', [
+					'title' => Yii::t('User', 'Set new password'),
+					'data-toggle' => 'tooltip',
+					'class' => 'glyphicon glyphicon-lock',
+				]);
 
-		// Действия
+				return [
+					'size' => \kartik\popover\PopoverX::SIZE_LARGE,
+					'encodeOutput' => FALSE,
+					'displayValue' => $icon,
+					'formOptions' => ['action' => ['set-new-password']],
+					'inputType' => \kartik\editable\Editable::INPUT_WIDGET,
+					'widgetClass' => \common\widgets\PasswordInput::className(),
+					'options' => [
+						'options' => [
+							'autocomplete' => 'off',
+						],
+					],
+					'pluginEvents' => [ // stopPropagation, чтобы dirtyFields не сохранял новое значение
+						"editableSuccess" => "function(event, val, form, data) { 
+							event.stopPropagation();
+						}",
+					],
+					'header' => Yii::t('User', 'Set new password'),
+					'placement' => \kartik\popover\PopoverX::ALIGN_LEFT,
+				];
+			},
+		],
+
+		// Назначения
 		[
 			'class' => 'yii\grid\ActionColumn',
 			'contentOptions' => ['class' => 'action-column'],
-			'template' => '{assignment}{delete}',
+			'template' => '{assignment}',
 			'buttons' => [
 				'assignment' => function($url, $model, $key) {
 					$options = [
@@ -88,6 +125,15 @@ echo GridView::widget([
 
 					return Html::a('<span class="glyphicon glyphicon-user"></span>', $url, $options);
 				},
+			],
+		],
+
+		// Удаление
+		[
+			'class' => 'yii\grid\ActionColumn',
+			'contentOptions' => ['class' => 'action-column'],
+			'template' => '{delete}',
+			'buttons' => [
 				'delete' => function($url, $model, $key) {
 					return ConfirmAction::widget(['url' => $url]);
 				},

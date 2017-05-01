@@ -29,14 +29,14 @@ $('.search[data-target]').keyup(function () {
 function search(target) {
 	var $list = $('select.list[data-target="' + target + '"]');
 	$list.html('');
-	var q = $('.search[data-target="' + target + '"]').val();
+	var q = $('.search[data-target="' + target + '"]').val().toLowerCase();
 
 	var groups = {
 		1: [$('<optgroup label="' + lajax.t('Roles', false) + '">'), false],
 		2: [$('<optgroup label="' + lajax.t('Permissions', false) + '">'), false]
 	};
 	$.each(_opts.items[target], function (index, value) {
-		if (index.indexOf(q) >= 0) {
+		if (value.name_t.toLowerCase().indexOf(q) >= 0) {
 			$('<option>').text(value.name_t).val(index).appendTo(groups[value.type][0]);
 			groups[value.type][1] = true;
 		}
