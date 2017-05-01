@@ -1,6 +1,6 @@
 <?php
 
-namespace aadutskevich\admin\models\searchs;
+namespace aadutskevich\admin\models\search;
 
 use Yii;
 use yii\base\Model;
@@ -18,6 +18,7 @@ class AuthItem extends Model
     const TYPE_ROUTE = 101;
 
     public $name;
+    public $name_t;
     public $type;
     public $description;
     public $ruleName;
@@ -29,7 +30,7 @@ class AuthItem extends Model
     public function rules()
     {
         return [
-            [['name', 'ruleName', 'description'], 'safe'],
+            [['name', 'name_t', 'ruleName', 'description'], 'safe'],
             [['type'], 'integer'],
         ];
     }
@@ -40,12 +41,12 @@ class AuthItem extends Model
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('rbac-admin', 'Name'),
-            'item_name' => Yii::t('rbac-admin', 'Name'),
-            'type' => Yii::t('rbac-admin', 'Type'),
-            'description' => Yii::t('rbac-admin', 'Description'),
-            'ruleName' => Yii::t('rbac-admin', 'Rule Name'),
-            'data' => Yii::t('rbac-admin', 'Data'),
+	        'name' => Yii::t('rbac-admin', 'ID'),
+	        'name_t' => Yii::t('rbac-admin', 'Name'),
+	        'type' => Yii::t('rbac-admin', 'Type'),
+	        'description' => Yii::t('rbac-admin', 'Description'),
+	        'ruleName' => Yii::t('rbac-admin', 'Rule Name'),
+	        'data' => Yii::t('rbac-admin', 'Data'),
         ];
     }
 
@@ -56,7 +57,7 @@ class AuthItem extends Model
      */
     public function search($params)
     {
-        /* @var \yii\rbac\Manager $authManager */
+        /* @var \aadutskevich\admin\components\DbManager $authManager */
         $authManager = Yii::$app->getAuthManager();
         if ($this->type == Item::TYPE_ROLE) {
             $items = $authManager->getRoles();

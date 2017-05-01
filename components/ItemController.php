@@ -2,14 +2,14 @@
 
 namespace aadutskevich\admin\components;
 
+use aadutskevich\admin\rbac\Item;
 use Yii;
 use aadutskevich\admin\models\AuthItem;
-use aadutskevich\admin\models\searchs\AuthItem as AuthItemSearch;
+use aadutskevich\admin\models\search\AuthItem as AuthItemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\base\NotSupportedException;
 use yii\filters\VerbFilter;
-use yii\rbac\Item;
 
 /**
  * AuthItemController implements the CRUD actions for AuthItem model.

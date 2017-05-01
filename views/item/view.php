@@ -43,6 +43,7 @@ $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate
                 'model' => $model,
                 'attributes' => [
                     'name',
+                    'name_t',
                     'description:ntext',
                     'ruleName',
                     'data:ntext',

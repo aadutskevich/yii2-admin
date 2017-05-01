@@ -5,7 +5,7 @@ namespace aadutskevich\admin\controllers;
 use Yii;
 use aadutskevich\admin\models\BizRule;
 use yii\web\Controller;
-use aadutskevich\admin\models\searchs\BizRule as BizRuleSearch;
+use aadutskevich\admin\models\search\BizRule as BizRuleSearch;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use aadutskevich\admin\components\Helper;

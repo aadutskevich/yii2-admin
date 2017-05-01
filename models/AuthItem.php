@@ -12,6 +12,7 @@ use aadutskevich\admin\components\Helper;
  * This is the model class for table "tbl_auth_item".
  *
  * @property string $name
+ * @property string $name_t Перевод названия (само название должно использоваться как интернациональый ID)
  * @property integer $type
  * @property string $description
  * @property string $ruleName
@@ -25,6 +26,7 @@ use aadutskevich\admin\components\Helper;
 class AuthItem extends Model
 {
     public $name;
+    public $name_t;
     public $type;
     public $description;
     public $ruleName;
@@ -36,7 +38,7 @@ class AuthItem extends Model
 
     /**
      * Initialize object
-     * @param Item  $item
+     * @param self $item
      * @param array $config
      */
     public function __construct($item = null, $config = [])
@@ -44,6 +46,7 @@ class AuthItem extends Model
         $this->_item = $item;
         if ($item !== null) {
             $this->name = $item->name;
+            $this->name_t = $item->name_t;
             $this->type = $item->type;
             $this->description = $item->description;
             $this->ruleName = $item->ruleName;
@@ -60,12 +63,13 @@ class AuthItem extends Model
         return [
             [['ruleName'], 'checkRule'],
             [['name', 'type'], 'required'],
+            [['name', 'name_t', 'description'], 'trim'],
             [['name'], 'unique', 'when' => function() {
                 return $this->isNewRecord || ($this->_item->name != $this->name);
             }],
             [['type'], 'integer'],
             [['description', 'data', 'ruleName'], 'default'],
-            [['name'], 'string', 'max' => 64]
+            [['name', 'name_t'], 'string', 'max' => 64]
         ];
     }
 
@@ -113,7 +117,8 @@ class AuthItem extends Model
     public function attributeLabels()
     {
         return [
-            'name' => Yii::t('rbac-admin', 'Name'),
+            'name' => Yii::t('rbac-admin', 'ID'),
+            'name_t' => Yii::t('rbac-admin', 'Name'),
             'type' => Yii::t('rbac-admin', 'Type'),
             'description' => Yii::t('rbac-admin', 'Description'),
             'ruleName' => Yii::t('rbac-admin', 'Rule Name'),
@@ -165,6 +170,7 @@ class AuthItem extends Model
                 $oldName = $this->_item->name;
             }
             $this->_item->name = $this->name;
+            $this->_item->name_t = $this->name_t;
             $this->_item->description = $this->description;
             $this->_item->ruleName = $this->ruleName;
             $this->_item->data = $this->data === null || $this->data === '' ? null : Json::decode($this->data);

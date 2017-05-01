@@ -30,7 +30,9 @@ $this->registerJs($js);
     <?php $form = ActiveForm::begin(['id' => 'item-form']); ?>
     <div class="row">
         <div class="col-sm-6">
-            <?= $form->field($model, 'name')->textInput(['maxlength' => 64]) ?>
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'name_t')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
         </div>
