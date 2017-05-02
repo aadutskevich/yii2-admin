@@ -91,8 +91,8 @@ echo GridView::widget([
 				return [
 					'size' => \kartik\popover\PopoverX::SIZE_LARGE,
 					'encodeOutput' => FALSE,
-					'displayValue' => $icon,
-					'formOptions' => ['action' => ['set-new-password']],
+					'displayValue' => $model->getPasswordIcon(),
+					'beforeInput' => Html::hiddenInput('displayAttribute', 'passwordIcon'),
 					'inputType' => \kartik\editable\Editable::INPUT_WIDGET,
 					'widgetClass' => \common\widgets\PasswordInput::className(),
 					'options' => [
@@ -100,7 +100,7 @@ echo GridView::widget([
 							'autocomplete' => 'off',
 						],
 					],
-					'pluginEvents' => [ // stopPropagation, чтобы dirtyFields не сохранял новое значение
+					'pluginEvents' => [ // stopPropagation, чтобы dirtyFields не сохранял введённое значение
 						"editableSuccess" => "function(event, val, form, data) { 
 							event.stopPropagation();
 						}",

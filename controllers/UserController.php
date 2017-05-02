@@ -96,57 +96,6 @@ class UserController extends Controller
     }
 
 
-	/**
-	 * Задание нового пароля через ajax
-	 * @return array
-	 */
-	public function actionSetNewPassword()
-	{
-		// use Yii's response format to encode output as JSON
-		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-		try {
-
-			if (Yii::$app->request->isAjax && Yii::$app->request->post('hasEditable') == 1) {
-
-				$id = (string)Yii::$app->request->post('editableKey');
-				$attr = (string)Yii::$app->request->post('editableAttribute');
-
-
-				// instantiate model for saving
-				/** @var \yii\db\ActiveRecord $model */
-				$model = $this->findModel($id);
-
-
-				// обработка сценариев
-				$model->scenario = User::SCENARIO_AJAX_UPDATE;
-
-				// загружаем переданное значение
-				$className = (new \ReflectionClass($model))->getShortName();
-				$values = reset(Yii::$app->request->post($className));
-				$value = $values[$attr];
-				$model->load(['new_password' => $value], '');
-
-				if ($model->validate(['new_password'])) {
-					$model->save(TRUE, ['password']);
-
-					$icon = yii\helpers\Html::tag('span', '', [
-						'title' => Yii::t('User', 'Set new password'),
-						'data-toggle' => 'tooltip',
-						'class' => 'glyphicon glyphicon-lock',
-					]);
-
-					return ['output' => $icon, 'message' => ''];
-				} else {
-					throw new yii\web\ForbiddenHttpException(implode('<br>', $model->getFirstErrors()));
-				}
-			}
-
-			throw new yii\web\ServerErrorHttpException(Yii::t('Exception', 'Unexpected error.'));
-		} catch (\Exception $e) {
-			return ['output' => '', 'message' => YII_ENV_DEV ? $e->getTraceAsString() : $e->getMessage()];
-		}
-	}
 
 	/**
 	 * Изменение пароля

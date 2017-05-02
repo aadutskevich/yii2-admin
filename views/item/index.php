@@ -48,7 +48,10 @@ unset($rules[RouteRule::RULE_NAME]);
 				'attribute' => 'description',
 				'label' => Yii::t('rbac-admin', 'Description'),
 			],
-			['class' => 'yii\grid\ActionColumn',],
+			[
+				'class' => 'yii\grid\ActionColumn',
+				'contentOptions' => ['class' => 'action-column'],
+			],
 		],
 	])
 	?>

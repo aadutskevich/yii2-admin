@@ -179,9 +179,10 @@ class Helper
 	 * Filter menu recursive
 	 * @param array $items
 	 * @param integer|User $user
+	 * @param integer $level
 	 * @return array
 	 */
-	protected static function filterRecursive($items, $user)
+	protected static function filterRecursive($items, $user, $level = 1)
 	{
 		$result = [];
 		foreach ($items as $i => $item) {
@@ -192,9 +193,12 @@ class Helper
 				$subItems = self::filterRecursive($item['items'], $user);
 				if (count($subItems)) {
 					$allow = TRUE;
+				} elseif($level == 1) {
+					$allow = FALSE;
 				}
 				$item['items'] = $subItems;
 			}
+
 			if ($allow) {
 				$result[$i] = $item;
 			}

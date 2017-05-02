@@ -165,22 +165,4 @@ class Module extends \yii\base\Module
         $this->_menus = array_merge($this->_menus, $menus);
         $this->_normalizeMenus = null;
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function beforeAction($action)
-    {
-        if (parent::beforeAction($action)) {
-            /* @var $action \yii\base\Action */
-            $view = $action->controller->getView();
-
-            $view->params['breadcrumbs'][] = [
-                'label' => ($this->defaultUrlLabel ?: Yii::t('rbac-admin', 'Admin')),
-                'url' => ['/' . ($this->defaultUrl ?: $this->uniqueId)]
-            ];
-            return true;
-        }
-        return false;
-    }
 }
